@@ -26,9 +26,9 @@ public class EmployeeEntity {
 
     private Integer age;
 
-//    private String role; //ADMIN, USER
+    private String role; //ADMIN, USER
 
-//    private Double salary;
+    private Double salary;
 
     private LocalDate dateOfJoining;
 

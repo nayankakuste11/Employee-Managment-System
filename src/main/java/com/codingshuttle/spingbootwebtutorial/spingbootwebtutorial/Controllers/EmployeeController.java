@@ -4,6 +4,7 @@ import com.codingshuttle.spingbootwebtutorial.spingbootwebtutorial.DTO.EmployeeD
 import com.codingshuttle.spingbootwebtutorial.spingbootwebtutorial.Entities.EmployeeEntity;
 
 import com.codingshuttle.spingbootwebtutorial.spingbootwebtutorial.Services.EmployeeService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
@@ -38,13 +39,13 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public ResponseEntity<EmployeeDTO> createNewEmployee(@RequestBody EmployeeEntity inputEmployee) {
+    public ResponseEntity<EmployeeDTO> createNewEmployee(@RequestBody @Valid EmployeeDTO inputEmployee) {
         EmployeeDTO savedEntity = employeeService.createNewEmployee(inputEmployee);
         return new ResponseEntity<>(savedEntity, HttpStatus.CREATED);
     }
 
     @PutMapping(path = "/{employeeId}")
-    public ResponseEntity<EmployeeDTO> updateEmployeeByID(@RequestBody EmployeeDTO employeeDTO, @PathVariable Long employeeId) {
+    public ResponseEntity<EmployeeDTO> updateEmployeeByID(@RequestBody @Valid EmployeeDTO employeeDTO, @PathVariable Long employeeId) {
         return ResponseEntity.ok(employeeService.updateEmployeeByID(employeeId, employeeDTO));
     }
 
